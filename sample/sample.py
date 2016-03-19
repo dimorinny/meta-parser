@@ -1,15 +1,15 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
-from meta_parser.meta_parser import MetaParser
+from meta_parser import MetaParser
 
 
 def main():
-    schema = [
-        {'input': 'og:title', 'output': 'title'},
-        {'input': 'og:description', 'output': 'description'},
-        {'input': 'og:image', 'output': 'image'},
-        {'input': 'og:url', 'output': 'url'}
-    ]
+    schema = {
+        'og:title': 'title',
+        'og:description': 'description',
+        'og:image': 'image',
+        'og:url': 'url'
+    }
 
     urls = ['http://www.gazeta.ru/army/photo/kak_rossiya_voevala_v_sirii.shtml',
             'http://www.gazeta.ru/sport/2016/03/14/a_8123591.shtml']

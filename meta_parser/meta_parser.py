@@ -8,20 +8,21 @@ class MetaParser(object):
         self._result = BeautifulSoup(requests.get(parsed_url).text, 'lxml')
         self._schema = output_schema
 
+    # noinspection PyShadowingBuiltins
     @property
     def result(self):
         data = {}
 
-        for info in self._schema:
-            results = self._result.findAll(attrs={'property': info['input']})
+        for input, output in self._schema.items():
+            results = self._result.findAll(attrs={'property': input})
 
             if len(results) == 0:
                 raise RuntimeError('Page {url} has not meta tag with {input} property'.format(
-                    url=self._url, input=info['input']))
+                    url=self._url, input=input))
 
             value = results[0]['content']
 
             if value:
-                data[info['output']] = value.strip()
+                data[output] = value.strip()
 
         return data
