@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
+FIND_ATTRIBUTES = ['property', 'name']
+
 
 class MetaParser(object):
     def __init__(self, parsed_url, output_schema):
@@ -14,7 +16,13 @@ class MetaParser(object):
         data = {}
 
         for input, output in self._schema.items():
-            results = self._result.findAll(attrs={'property': input})
+
+            results = []
+
+            for attribute in FIND_ATTRIBUTES:
+                results = self._result.findAll(attrs={attribute: input})
+                if len(results) != 0:
+                    break
 
             if len(results) == 0:
                 raise RuntimeError('Page {url} has not meta tag with {input} property'.format(

@@ -8,11 +8,11 @@ def main():
         'og:title': 'title',
         'og:description': 'description',
         'og:image': 'image',
-        'og:url': 'url'
+        'relap-image': 'url'
     }
 
-    urls = ['http://www.gazeta.ru/army/photo/kak_rossiya_voevala_v_sirii.shtml',
-            'http://www.gazeta.ru/sport/2016/03/14/a_8123591.shtml']
+    urls = ['https://news.mail.ru/incident/25361692/',
+            'http://www.novayagazeta.ru/society/72528.html']
     data = []
 
     for url in urls:
